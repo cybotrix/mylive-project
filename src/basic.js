@@ -55,8 +55,8 @@ const BasicDetails =() =>{
                     About Yourself : <textarea placeholder="Write about yourself" className="form-control" maxLength={200} onChange={obj=>setAbout(obj.target.value)} value={about} ></textarea>
 
                 </div>
-                <div className="card-footer bg-secondary text-white text-center"> 
-                    <button className="btn btn-warning mt-1" onClick={save} > Save & Continue </button>
+                <div className="card-footer text-center"> 
+                    <button className="btn btn-info" onClick={save} > Save & Continue </button>
                 </div>
           </div>
          </div>
