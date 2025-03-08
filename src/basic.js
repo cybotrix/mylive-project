@@ -1,6 +1,7 @@
 import LeftNav from "./navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import swal from "sweetalert";
 
 const BasicDetails =() =>{
    let basicdata=useSelector(state=>state.MyBasic);
@@ -23,14 +24,14 @@ const BasicDetails =() =>{
      };
      let mydata={type:"basic",info:userinfo}
       dispatch(mydata);
-      alert("Your Basic details saved successfully...");
+      swal("Save Success", "Your Basic details saved successfully...", "success");
    }
   return(
     <div className="container mt-4">
       <div className="row">
         <div className="col-xl-3 mb-4"><LeftNav/></div>
         <div className="col-xl-6 mb-4">
-            <div className="card border-0 mb-4 shadow-lg p-4">
+            <div className="card border-0 mb-4 shadow-lg">
                 <div className="card-header bg-info text-white text-center"> Basic Details </div>
                 <div className="card-body"> 
                         
