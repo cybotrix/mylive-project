@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import swal from "sweetalert";
+
 const FinalPreview= ()=>{
   let basicdata=useSelector(state=>state.MyBasic);
   let educationdata=useSelector(state=>state.MyEducation);
@@ -7,6 +9,32 @@ const FinalPreview= ()=>{
   let skilldata=useSelector(state=>state.MySkills);
   let expdata=useSelector(state=>state.MyExpirence);
   let projectdata=useSelector(state=>state.MyProject)
+
+  const save = () =>{
+    let mydata = {
+      "basic":basicdata,
+      "edu":educationdata,
+      "contact":contactdata,
+      "skill":skilldata,
+      "exp":expdata,
+      "project":projectdata
+    }
+
+  let url = "https://cybotrix.com/liveapi/api/save";
+  let postdata = {
+      headers:{'content-type':'application/json'},
+      method:'post',
+      body:JSON.stringify({"details":mydata})
+  }
+
+  fetch(url, postdata)
+  .then(response =>response.text())
+  .then(info=>{
+      swal("Profile Submitted", "Your Profile Submitted, We Will Contact You Soon...", "success");
+
+      setTimeout(()=>{window.location.reload()}, 3000);
+  })
+}
 
   return(
     <div className="container mt-4 mb-5">
@@ -125,7 +153,7 @@ const FinalPreview= ()=>{
             </div>
 
             <div className="col-xl-12 text-center">
-               <button className="btn btn-danger">Submit My Details</button>
+               <button className="btn btn-danger" onClick={save}>Submit My Details</button>
             </div>
        </div>
     </div>
